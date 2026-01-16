@@ -5,6 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tiar Sawla Fitriansyah | Portofolio</title>
     <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;600;700&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Buda:wght@300&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&display=swap" rel="stylesheet">
     <link href="style.css" rel="stylesheet">
     <style>
         
@@ -74,7 +79,7 @@
             <p class="section-subtitle fade-in">Area yang Saya Eksplorasi</p>
             <div class="interest-grid">
                 <div class="interest-card fade-in">
-                    <span class="interest-icon">🐍</span>
+                    <img src="python.png" alt="python" class="interest-icon">
                     <h3>Pemrograman Python</h3>
                     <p>
                         Mengeksplorasi berbagai aspek Python, scripting sederhana dan semacamnya. Python adalah bahasa yang powerful dan versatile untuk 
@@ -82,7 +87,7 @@
                     </p>
                 </div>
                 <div class="interest-card fade-in">
-                    <span class="interest-icon">🔌</span>
+                    <img src="iot.png" alt="iot" class="interest-icon">
                     <h3>Pembuatan Produk IoT</h3>
                     <p>
                         Tertarik untuk menghubungkan dunia fisik dengan digital melalui Internet of Things. 
@@ -91,7 +96,7 @@
                     </p>
                 </div>
                 <div class="interest-card fade-in">
-                    <span class="interest-icon">🔒</span>
+                    <img src="kemanan jaringan.png" alt="kamanan jaringan" class="interest-icon">
                     <h3>Keamanan Jaringan</h3>
                     <p>
                         Saya masih baru memulai mempelajari konsep-konsep dasar keamanan jaringan dan bagaimana melindungi 
@@ -123,21 +128,24 @@
     </footer>
 
     <script>
-        // Scroll animation
         const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
+            threshold: 0.15,
+            rootMargin: '0px 0px -100px 0px'
         };
 
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('visible');
+                } else {
+                    entry.target.classList.remove('visible');
                 }
             });
         }, observerOptions);
 
-        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+        // Observe all sections and cards
+        document.querySelectorAll('.section-container').forEach(el => observer.observe(el));
+        document.querySelectorAll('.interest-card').forEach(el => observer.observe(el));
 
         // Smooth scroll
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -150,12 +158,22 @@
             });
         });
 
-        // Mobile menu toggle (basic implementation)
+        // Mobile menu toggle
         const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
         const navLinks = document.querySelector('.nav-links');
-        
+
         mobileMenuBtn.addEventListener('click', () => {
             navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+        });
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 100) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
         });
     </script>
 </body>

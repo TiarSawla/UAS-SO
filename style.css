@@ -147,11 +147,11 @@
         }
 
         .hero h1 {
-            font-family: 'Crimson Pro', serif;
+            font-family: 'Buda', serif;
             font-size: 4rem;
-            font-weight: 700;
+            font-weight: 300;
             margin-bottom: 1rem;
-            letter-spacing: -2px;
+            letter-spacing: 3px;
             animation: fadeInUp 1s ease-out 0.2s both;
         }
 
@@ -204,13 +204,13 @@
         }
 
         .section-title {
-            font-family: 'Crimson Pro', serif;
-            font-size: 2.8rem;
-            font-weight: 700;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 3rem;
+            font-weight: 1;
             text-align: center;
             margin-bottom: 1rem;
             color: var(--primary-dark);
-            letter-spacing: -1px;
+            letter-spacing: 5px;
         }
 
         .section-subtitle {
@@ -282,9 +282,29 @@
         }
 
         .interest-icon {
-            font-size: 3rem;
+            width: 80px;
+            height: 80px;
             margin-bottom: 1.5rem;
             display: block;
+            margin-left: auto;
+            margin-right: auto;
+            object-fit: contain;
+            transition: transform 0.6s ease;
+            transform-style: preserve-3d;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px) rotateY(0deg);
+            }
+            50% {
+                transform: translateY(-10px) rotateY(5deg);
+            }
+        }
+
+        .interest-card:hover .interest-icon {
+            transform: rotateY(360deg) scale(1.1) translateY(-10px);
         }
 
         .interest-card h3 {
@@ -386,13 +406,55 @@
         }
 
         /* Scroll Animation */
-        .fade-in {
+        /* Fade in animation untuk section */
+        .section-container > * {
             opacity: 0;
             transform: translateY(30px);
             transition: opacity 0.8s ease, transform 0.8s ease;
         }
 
-        .fade-in.visible {
+        .section-container.visible > * {
             opacity: 1;
             transform: translateY(0);
+        }
+
+        /* Staggered animation untuk children */
+        .section-container.visible > *:nth-child(1) {
+            transition-delay: 0.1s;
+        }
+
+        .section-container.visible > *:nth-child(2) {
+            transition-delay: 0.2s;
+        }
+
+        .section-container.visible > *:nth-child(3) {
+            transition-delay: 0.3s;
+        }
+
+        .section-container.visible > *:nth-child(4) {
+            transition-delay: 0.4s;
+        }
+
+        /* Animation untuk interest cards */
+        .interest-card {
+            opacity: 0;
+            transform: translateY(40px) scale(0.95);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .interest-card.visible {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+
+        .interest-card:nth-child(1).visible {
+            transition-delay: 0.1s;
+        }
+
+        .interest-card:nth-child(2).visible {
+            transition-delay: 0.3s;
+        }
+
+        .interest-card:nth-child(3).visible {
+            transition-delay: 0.5s;
         }
